@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="ToDoApp.Views.UserControls.TaskControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:ToDoApp.Views.UserControls"
+             xmlns:localViewModels="clr-namespace:ToDoApp.ViewModels"
+             mc:Ignorable="d" Background="Transparent"
+             d:DesignHeight="100" d:DesignWidth="480">
+    
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <CheckBox Margin="10,0,10,0" Style="{StaticResource MaterialDesignSecondaryCheckBox}"
+                  IsChecked="{Binding IsCompleted, Mode=TwoWay}" />
+        
+        <TextBox Width="240" Margin="10,0,0,0" FontSize="14"
+                 Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <materialDesign:TimePicker Width="100" Margin="10,0,0,0" Is24Hours="True"
+                                   Style="{StaticResource MaterialDesignFilledTimePicker}"
+                                   SelectedTime="{Binding NotificationTime}"/>
+        
+        <Button Margin="10,0,0,0" Style="{StaticResource MaterialDesignIconButton}"
+                Command="{Binding ClearCommand}">
+            <materialDesign:PackIcon Width="30" Height="30" Kind="Close"/>
+        </Button>
+        
+    </StackPanel>
+</UserControl>
